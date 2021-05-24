@@ -8,6 +8,7 @@ import { LandingComponent } from './landing/landing.component';
 import { MdbModule } from 'mdb-angular-ui-kit';
 import { ProfileComponent } from './profile/profile.component';
 import { EmployeesComponent } from './employees/employees.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -21,7 +22,8 @@ import { EmployeesComponent } from './employees/employees.component';
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    MdbModule
+    MdbModule,
+    ReactiveFormsModule
   ],
   exports: [
     DashboardComponent
