@@ -1,0 +1,15 @@
+<div class="row justify-content-center">
+  <ng-container *ngIf="!(auth.isAuthenticated$ | async)">
+    <div class="col-lg-2 card">
+      <div class="card-body text-center">
+        <h4 class="card-title">Employee Directory</h4>
+        <p class="card-text">
+          Welcome to our employee directory. Log in to view our directory of employees.
+        </p>
+        <button type="button" class="btn btn-primary" (click)="auth.loginWithRedirect()">Log in</button>
+      </div>
+    </div>
+  </ng-container>
+</div>
+
+

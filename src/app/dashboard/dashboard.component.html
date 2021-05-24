@@ -1,2 +1,54 @@
-<p>dashboard works!</p>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <!-- Container wrapper -->
+  <div class="container-fluid">
+    <!-- Toggle button -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      (click)="rightAligned.toggle()"
+      aria-controls="navbarRightAlignExample"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Collapsible wrapper -->
+    <div
+      class="collapse navbar-collapse"
+      id="navbarRightAlignExample"
+      mdbCollapse
+      #rightAligned="mdbCollapse"
+    >
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item"><div mdbDropdown class="dropdown" *ngIf="auth.user$ | async as user">
+          <button
+            class="btn btn-link dropdown-toggle text-capitalize"
+            type="button"
+            id="dropdownMenuButton"
+            aria-expanded="false"
+            mdbDropdownToggle
+          >
+            
+          <img
+            [src]="user?.picture"
+            class="img rounded-circle"
+            height="35"
+            alt=""
+          />
+            {{ user?.given_name }}
+          </button>
+          <ul mdbDropdownMenu class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <li>
+              <a class="dropdown-item btn btn-link text-capitalize d-flex align-items-center" (click)="auth.logout({ returnTo: document.location.origin })">
+                <i class="fas fa-2x fa-power-off text-danger"></i> <span class="ms-2">Log Out</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
 <router-outlet></router-outlet>

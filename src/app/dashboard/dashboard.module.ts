@@ -5,17 +5,23 @@ import { RouterModule } from '@angular/router';
 
 import { routes } from './dashboard.routes';
 import { LandingComponent } from './landing/landing.component';
+import { MdbModule } from 'mdb-angular-ui-kit';
+import { ProfileComponent } from './profile/profile.component';
+import { EmployeesComponent } from './employees/employees.component';
 
 
 
 @NgModule({
   declarations: [
     DashboardComponent,
-    LandingComponent
+    LandingComponent,
+    ProfileComponent,
+    EmployeesComponent
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    MdbModule
   ],
   exports: [
     DashboardComponent

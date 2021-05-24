@@ -1,12 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AuthComponent } from './auth.component';
+import { AuthComponent } from './client-auth.component';
 import { RouterModule, Routes } from '@angular/router';
+import { LandingGuard } from '../landing.guard';
 
 const routes: Routes = [
   {
     path: '',
-    component: AuthComponent
+    component: AuthComponent,
+    canActivate: [LandingGuard]
+    
   }
 ];
 
@@ -22,4 +25,4 @@ const routes: Routes = [
     AuthComponent
   ]
 })
-export class AuthModule { }
+export class ClientAuthModule { }
