@@ -1,1 +1,48 @@
-<p>employees works!</p>
+<div class="container mt-3 mb-5 py-3 card">
+  <div class="row justify-content-end">
+    <div class="col col-md-4">
+      <div class="input-group mb-3">
+        <span class="input-group-text" *ngIf="searchField?.value === '' && !searching"><i class="fas fa-search" ></i></span>
+        <div class="input-group-text" *ngIf="searching">
+          <div class="spinner-border spinner-border-sm text-info" role="status"></div>
+        </div>
+        <button (click)="clearSearchResults()" class="input-group-text" *ngIf="searchField?.value !== '' && !searching">
+          <i class="fas fa-times"></i>
+        </button>
+        <input [formControl]="searchField" type="text" class="form-control" placeholder="Find employees" aria-label="Search"
+          aria-describedby="search-addon" />
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md">
+      <table class="table table-striped table-bordered table-sm align-middle" *ngIf="filteredEmployees?.length > 0">
+        <thead>
+          <tr class="table-light">
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Email</th>
+            <th scope="col">Address</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let employee of filteredEmployees; let i = index;">
+            <th scope="row">{{i + 1}}</th>
+            <td> <img class="rounded-circle" height="35" [src]="employee?.picture?.thumbnail" alt=""></td>
+            <td>{{ employee?.name?.first }}</td>
+            <td>{{ employee?.name?.last }}</td>
+            <td>{{ employee?.phone }}</td>
+            <td>{{ employee?.email }}</td>
+            <td>{{ employee?.location?.street?.number }} {{ employee?.location?.street?.name }} {{ employee?.location?.city }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="note note-info" *ngIf="filteredEmployees?.length === 0">
+        No employees were found.
+      </p>
+    </div>
+  </div>
+</div>
