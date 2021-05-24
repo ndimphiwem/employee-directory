@@ -1,0 +1,17 @@
+<div class="c-sidenav__container">
+    <ul class="c-tabs u-full no-gutters">
+        <li class="c-tabs__list c-sidenav-tabs__list  u-text__sidenav u-border--bottom"
+            (click)="sidenav.close('actionbar-left');">
+            <button class="btn btn-link"><i class="fas fa-times fa-2x"></i></button>
+        </li>
+        <li class="c-tabs__list c-sidenav-tabs__list  u-text__sidenav u-border--bottom"
+            (click)="sidenav.close('actionbar-left');">
+            <a class="c-tabs__link" [routerLink]="'test'">Test</a>
+        </li>
+        <li class="c-tabs__list c-sidenav-tabs__list  u-text__sidenav u-border--bottom"
+            (click)="sidenav.close('actionbar-left');">
+            <a class="c-tabs__link" [routerLink]="'test'">Test 2</a>
+        </li>
+    </ul>
+</div>
+<div class="c-sidenav__overlay" (click)="sidenav.close('actionbar-left')"></div>
