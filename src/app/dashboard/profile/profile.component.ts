@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '@auth0/auth0-angular';
-import { first } from 'rxjs/operators';
+import { first, switchMap, tap } from 'rxjs/operators';
 import { ProfileService } from './profile.service';
 
 @Component({
@@ -16,10 +16,11 @@ export class ProfileComponent implements OnInit {
 
   constructor(readonly auth: AuthService, readonly profile: ProfileService) {
     this.auth.user$.pipe(
-      first()
-    ).subscribe(user => {
-      this.user = user;
-      const userAddress = { ...user?.metadata?.address };
+      first(),
+      tap(user => this.user = user),
+      switchMap((user: any) =>  this.profile.getProfile(user?.sub)),
+    ).subscribe((userProfile: any) => {
+      const userAddress = { ...userProfile?.user_metadata?.address };
       this.profileForm = new FormGroup({
         streetAddress: new FormControl(userAddress?.streetAddress || null, Validators.required),
         suburb: new FormControl(userAddress?.suburb || null, Validators.required),
@@ -48,5 +49,4 @@ export class ProfileComponent implements OnInit {
       });
     }
   }
-
 }

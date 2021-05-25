@@ -22,28 +22,10 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
       domain: 'ndimphiwem.eu.auth0.com',
       clientId: '7zojGdlUucozWGPcJJn0G1cx1npaZQTZ',
       audience: 'https://ndimphiwem.eu.auth0.com/api/v2/',
-      scope: 'read:current_user',
-      httpInterceptor: {
-        allowedList: [
-          {
-            uri: 'https://ndimphiwem.eu.auth0.com/api/v2/*',
-            tokenOptions: {
-              audience: 'https://ndimphiwem.eu.auth0.com/api/v2/',
-              scope: 'read:current_user'
-            }
-          },
-          {
-            uri: 'https://ndimphiwem.eu.auth0.com/api/v2/users',
-            tokenOptions: {
-              audience: 'https://ndimphiwem.eu.auth0.com/api/v2/',
-              scope: 'update:current_user'
-            }
-          }
-        ]
-      }
+      scope: 'update:current_user_metadata read:current_user_metadata read:current_user'
     }),
   ],
-  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthHttpInterceptor, multi: true },],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
