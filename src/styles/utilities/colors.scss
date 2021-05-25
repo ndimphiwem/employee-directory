@@ -1,0 +1,13 @@
+.bg{
+  &--body {
+    background: linear-gradient(125deg, #201B3B, #1C234B);;
+  }
+
+  &--card {
+    background: linear-gradient(125deg,#1b234b,#1c234b);
+  }
+
+  &--header {
+    background: linear-gradient(125deg, #141318, #121416);
+  }
+}

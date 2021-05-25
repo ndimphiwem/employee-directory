@@ -1,0 +1,9 @@
+.form-control {
+  border-color: #201B3B;
+  transition: all 0.1s linear;
+
+  &:focus {
+    border-color: #ffa900;
+    box-shadow: inset 0px 0px 0px 1px #ffa900;
+  }
+}

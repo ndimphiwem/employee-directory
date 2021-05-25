@@ -1,16 +1,18 @@
-<div class="container mt-3 mb-5 py-3 card">
+<div class="container mt-3 mb-5 py-3 card bg--card">
   <div class="row justify-content-end">
-    <p class="h1">Employee Directory</p>
+    <div class="col-12 col-md">
+      <p class="h1 text-center text-md-start text-warning">Employee Directory</p>
+    </div>
     <div class="col col-md-4">
       <div class="input-group mb-3">
-        <span class="input-group-text" *ngIf="searchField?.value === '' && !searching"><i class="fas fa-search" ></i></span>
-        <div class="input-group-text" *ngIf="searching">
+        <span class="input-group-text border-0" *ngIf="searchField?.value === '' && !searching"><i class="fas fa-search" ></i></span>
+        <div class="input-group-text border-0" *ngIf="searching">
           <div class="spinner-border spinner-border-sm text-info" role="status"></div>
         </div>
-        <button (click)="clearSearchResults()" class="input-group-text" *ngIf="searchField?.value !== '' && !searching">
+        <button (click)="clearSearchResults()" class="input-group-text border-0" *ngIf="searchField?.value !== '' && !searching">
           <i class="fas fa-times"></i>
         </button>
-        <input [formControl]="searchField" type="text" class="form-control" placeholder="Find employees" aria-label="Search"
+        <input [formControl]="searchField" type="text" class="form-control bg-dark rounded" placeholder="Find employees" aria-label="Search"
         aria-describedby="search-addon" />
       </div>
     </div>
@@ -20,9 +22,9 @@
   </div>
   <div class="row" *ngIf="!loading">
     <div class="col-md table-responsive">
-      <table class="table table-responsive table-striped table-bordered table-sm align-middle" *ngIf="filteredEmployees?.length > 0">
+      <table class="table table-dark table-responsive table-striped table-bordered table-sm align-middle" *ngIf="filteredEmployees?.length > 0">
         <thead>
-          <tr class="table-light">
+          <tr class="table-dark">
             <th scope="col"></th>
             <th scope="col"></th>
             <th scope="col">First Name</th>

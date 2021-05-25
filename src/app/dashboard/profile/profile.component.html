@@ -1,31 +1,34 @@
 <div class="container mt-3 mb-5 py-3">
-  <div class="row justify-content-center">
-    <div class="col-md-4 col-lg-3">
-      <div class="card h-100 mt-5" *ngIf="auth.user$ | async as user">
+  <div class="row justify-content-center align-items-end">
+    <div class="col-md-4 col-lg-3 mt-5">
+      <div class="card h-100 bg--card text-white" *ngIf="auth.user$ | async as user">
         <img
         [src]="user?.picture"
           class="card-img-top rounded-circle img__avatar img-thumbnail"
           alt="..."
         />
         <div class="card-body">
-          <h5 class="card-title text-center">{{ user?.given_name }} {{ user?.family_name }} </h5>
+          <h5 class="card-title text-center text-warning">{{ user?.given_name }} {{ user?.family_name }} </h5>
           <p class="text-center"> {{ user?.email }} </p>
-          <p class="card-text" *ngIf="user?.metadata">
-            This is a longer card with supporting text below as a natural lead-in to
-            additional content. This content is a little bit longer.
-          </p>
+          <div class="card-text text-center" *ngIf="userAddress">
+            <p class="mb-1"> {{ userAddress?.streetAddress }} </p>
+            <p class="mb-1"> {{ userAddress?.suburb }} </p>
+            <p class="mb-1"> {{ userAddress?.city }} </p>
+            <p class="mb-1"> {{ userAddress?.province }} </p>
+            <p class="mb-1" *ngIf="userAddress?.workLocation"> I work in {{ userAddress?.workLocation }} </p>
+          </div>
         </div>
       </div>
 
     </div>
-    <div class="col-md-4">
-      <form *ngIf="profileForm" (submit)="updateProfile(profileForm)" [formGroup]="profileForm" class="p-3 pb-5 card">
+    <div class="col-md-6 col-lg-4">
+      <form *ngIf="profileForm" (submit)="updateProfile(profileForm)" [formGroup]="profileForm" class="p-3 pb-5 card bg--card">
         <div class="row">
           <div class="col-12">
             <div class="mb-3 pb-1">
               <input
                 type="text"
-                class="form-control"
+                class="form-control bg-dark text-white py-2"
                 formControlName="streetAddress"
                 placeholder="Street Address"
               />
@@ -35,7 +38,7 @@
             <div class="mb-3 pb-1">
               <input
                 type="text"
-                class="form-control"
+                class="form-control bg-dark text-white py-2"
                 formControlName="suburb"
                 placeholder="Suburb"
               />
@@ -45,7 +48,7 @@
             <div class="mb-3 pb-1">
               <input
                 type="text"
-                class="form-control"
+                class="form-control bg-dark text-white py-2"
                 formControlName="city"
                 placeholder="City"
               />
@@ -55,7 +58,7 @@
             <div class="mb-3 pb-1">
               <input
                 type="text"
-                class="form-control"
+                class="form-control bg-dark text-white py-2"
                 formControlName="province"
                 placeholder="Province"
                 required
@@ -64,7 +67,7 @@
           </div>
           <div class="col-12">
             <div class="mb-3 pb-1">
-              <select class="form-control select" formControlName="workLocation">
+              <select class="form-control bg-dark text-white  py-2" formControlName="workLocation">
                 <option value="" selected>Select Work Location</option>
                 <option [value]="location" *ngFor="let location of workLocations"> {{ location }} </option>
               </select>
@@ -72,7 +75,7 @@
           </div>
           <div class="col-12">
               <button type="submit" class="btn btn-dark" *ngIf="!loading">Update Profile</button>
-              <button class="btn btn-dark" type="button" *ngIf="loading" disabled>
+              <button class="btn btn-lg btn-dark" type="button" *ngIf="loading" disabled>
                 <span
                   class="spinner-border spinner-border-sm"
                   role="status"

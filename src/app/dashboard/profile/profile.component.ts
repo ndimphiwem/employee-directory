@@ -13,6 +13,7 @@ export class ProfileComponent implements OnInit {
   profileForm: any;
   loading = false;
   workLocations = ['Los Angeles', 'Cape Town', 'London'];
+  userAddress: any;
 
   constructor(readonly auth: AuthService, readonly profile: ProfileService) {
     this.auth.user$.pipe(
@@ -21,6 +22,7 @@ export class ProfileComponent implements OnInit {
       switchMap((user: any) =>  this.profile.getProfile(user?.sub)),
     ).subscribe((userProfile: any) => {
       const userAddress = { ...userProfile?.user_metadata?.address };
+      this.userAddress = userAddress;
       this.profileForm = new FormGroup({
         streetAddress: new FormControl(userAddress?.streetAddress || null, Validators.required),
         suburb: new FormControl(userAddress?.suburb || null, Validators.required),
@@ -43,8 +45,9 @@ export class ProfileComponent implements OnInit {
         user_metadata: {
           address: {...profile?.value}
         }
-      }, this.user?.sub).subscribe(res => {
-        console.log('user update', res);
+      }, this.user?.sub).subscribe((updatedProile: any) => {
+        this.userAddress = {...updatedProile?.user_metadata?.address};
+        console.log('user update', updatedProile);
         this.loading = false;
       });
     }

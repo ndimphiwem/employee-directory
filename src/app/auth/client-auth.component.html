@@ -1,13 +1,13 @@
-<div class="container vh-100">
+<div class="container-fluid vh-100">
   <div class="row justify-content-center align-items-center h-100">
     <ng-container *ngIf="!(auth.isAuthenticated$ | async)">
-      <div class="col-10 col-md-5 card">
-        <div class="card-body text-center">
-          <h4 class="card-title">Employee Directory</h4>
+      <div class="col-10 col-md-4 col-lg-3 card bg--card">
+        <div class="card-body text-center text-white">
+          <h1 class="card-title text-warning">Employee Directory</h1>
           <p class="card-text">
             Welcome to our employee directory. Log in to view our directory of employees.
           </p>
-          <button type="button" class="btn btn-primary" (click)="auth.loginWithRedirect()">Log in</button>
+          <button type="button" class="btn btn-lg btn-dark fs-6" (click)="auth.loginWithRedirect()">Log in</button>
         </div>
       </div>
     </ng-container>

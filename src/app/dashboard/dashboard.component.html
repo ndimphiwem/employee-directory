@@ -1,16 +1,16 @@
-<nav class="navbar navbar-light bg-light sticky-top">
+<nav class="navbar navbar-light bg--header sticky-top">
   <div class="container-fluid justify-content-between">
-    <button id="header-open-actionbar" aria-label="Open Side Navigation"
-      class="btn btn-link"
+    <a id="header-open-actionbar" aria-label="Open Side Navigation"
       (click)="sidenav.open('actionbar-left')"
       name="header-open-actionbar"
-      type="button"
+      role="button"
+      class="text-secondary"
     >
       <i class="fas fa-bars fa-2x"></i>
-    </button>
+  </a>
     <div mdbDropdown class="dropdown" *ngIf="auth.user$ | async as user">
       <button
-        class="btn btn-link dropdown-toggle text-capitalize"
+        class="btn btn-outline-warning dropdown-toggle text-capitalize fs-6"
         type="button"
         id="dropdownMenuButton"
         aria-expanded="false"
@@ -26,11 +26,11 @@
       />
         {{ user?.given_name }}
       </button>
-      <ul mdbDropdownMenu class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <ul mdbDropdownMenu class="dropdown-menu mt-2" aria-labelledby="dropdownMenuButton">
         <li>
-          <a class="dropdown-item btn btn-link text-capitalize d-flex align-items-center" (click)="auth.logout({ returnTo: document.location.origin })">
+          <button class="dropdown-item btn text-capitalize fs-6 d-flex align-items-center" (click)="auth.logout({ returnTo: document.location.origin })">
             <i class="fas fa-2x fa-power-off text-danger"></i> <span class="ms-2">Log Out</span>
-          </a>
+          </button>
         </li>
       </ul>
     </div>

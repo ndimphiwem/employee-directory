@@ -6,8 +6,16 @@
  
 @import '~mdb-angular-ui-kit/assets/scss/mdb.scss';
 
+// Config
 @import './styles/variables.scss';
 
+
+// Components
 @import './styles/components/sidenav.scss';
 
+// Utils
 @import './styles/utilities/images.scss';
+@import './styles/utilities/colors.scss';
+
+// Forms
+@import './styles/overrides/forms.scss';

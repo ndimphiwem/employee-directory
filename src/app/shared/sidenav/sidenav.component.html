@@ -1,33 +1,33 @@
 <div class="c-sidenav__container bg-light p-3">
   <ul class="c-tabs list-unstyled w-100">
-    <li class="d-flex" (click)="sidenav.close('actionbar-left')">
-      <button class="btn btn-link ms-auto">
+    <li class="d-flex mb-3" (click)="sidenav.close('actionbar-left')">
+      <a class="ms-auto" role="button">
         <i class="fas fa-times fa-2x"></i>
-      </button>
+      </a>
     </li>
-    <li (click)="sidenav.close('actionbar-left')">
+    <li class="mb-3" (click)="sidenav.close('actionbar-left')">
       <a
-        class="btn btn-link w-100 d-flex justify-content-start align-items-center"
+        class="btn w-100 d-flex text-white justify-content-start align-items-center"
         [routerLink]="'/dashboard'"
-        routerLinkActive="active"
+        routerLinkActive="btn-secondary text"
         [routerLinkActiveOptions]="{ exact: true }"
       >
         <i class="fas fa-chart-pie fa-2x me-3"></i> Dashboard</a
       >
     </li>
-    <li (click)="sidenav.close('actionbar-left')">
+    <li class="mb-3" (click)="sidenav.close('actionbar-left')">
       <a
-        class="btn btn-link w-100 d-flex justify-content-start align-items-center"
+        class="btn w-100 d-flex text-white justify-content-start align-items-center"
         [routerLink]="'profile'"
-        routerLinkActive="active"
+        routerLinkActive="btn-secondary"
         ><i class="far fa-user-circle fa-2x me-3"></i> Profile
       </a>
     </li>
-    <li (click)="sidenav.close('actionbar-left')">
+    <li class="mb-3" (click)="sidenav.close('actionbar-left')">
       <a
-        class="btn btn-link w-100 d-flex justify-content-start align-items-center"
+        class="btn w-100 d-flex text-white justify-content-start align-items-center"
         [routerLink]="'employees'"
-        routerLinkActive="active"
+        routerLinkActive="btn-secondary"
         ><i class="fas fa-users fa-2x me-3"></i> Employees
       </a>
     </li>
