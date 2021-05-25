@@ -2,14 +2,14 @@
   <ul class="c-tabs list-unstyled w-100">
     <li class="d-flex mb-3" (click)="sidenav.close('actionbar-left')">
       <a class="ms-auto" role="button">
-        <i class="fas fa-times fa-2x"></i>
+        <i class="fas fa-times fa-2x text-warning"></i>
       </a>
     </li>
     <li class="mb-3" (click)="sidenav.close('actionbar-left')">
       <a
         class="btn w-100 d-flex text-white justify-content-start align-items-center"
         [routerLink]="'/dashboard'"
-        routerLinkActive="btn-secondary text"
+        routerLinkActive="btn-secondary"
         [routerLinkActiveOptions]="{ exact: true }"
       >
         <i class="fas fa-chart-pie fa-2x me-3"></i> Dashboard</a
