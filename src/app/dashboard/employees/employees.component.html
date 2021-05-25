@@ -18,7 +18,7 @@
     </div>
   </div>
   <div class="d-flex justify-content-center py-5" *ngIf="loading">
-    <div class="spinner-border text-info" role="status"></div>
+    <div class="spinner-border text-warning" role="status"></div>
   </div>
   <div class="row" *ngIf="!loading">
     <div class="col-md table-responsive">
@@ -46,7 +46,7 @@
           </tr>
         </tbody>
       </table>
-      <p class="note note-info" *ngIf="filteredEmployees?.length === 0">
+      <p class="note note-warning" *ngIf="filteredEmployees?.length === 0">
         No employees were found.
       </p>
     </div>
