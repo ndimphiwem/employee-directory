@@ -7,8 +7,7 @@ import { concatMap, tap, pluck, filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-auth',
-  templateUrl: './client-auth.component.html',
-  styleUrls: ['./client-auth.component.scss']
+  templateUrl: './client-auth.component.html'
 })
 export class AuthComponent implements OnInit {
 

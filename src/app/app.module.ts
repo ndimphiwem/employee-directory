@@ -31,6 +31,13 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
               audience: 'https://ndimphiwem.eu.auth0.com/api/v2/',
               scope: 'read:current_user'
             }
+          },
+          {
+            uri: 'https://ndimphiwem.eu.auth0.com/api/v2/users',
+            tokenOptions: {
+              audience: 'https://ndimphiwem.eu.auth0.com/api/v2/',
+              scope: 'update:current_user'
+            }
           }
         ]
       }

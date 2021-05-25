@@ -5,16 +5,13 @@ import { SideNavService } from '../shared/sidenav/_services/sidenav.service';
 
 @Component({
   selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  templateUrl: './dashboard.component.html'
 })
 export class DashboardComponent implements OnInit {
 
   constructor(@Inject(DOCUMENT) public document: Document,readonly auth: AuthService,
   readonly sidenav: SideNavService,) { }
 
-  ngOnInit(): void {
-    this.auth.user$.subscribe(user => console.log(user))
-  }
+  ngOnInit(): void { }
 
 }

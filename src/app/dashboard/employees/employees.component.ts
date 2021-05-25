@@ -5,8 +5,7 @@ import { EmployeesService } from './employees.service';
 
 @Component({
   selector: 'app-employees',
-  templateUrl: './employees.component.html',
-  styleUrls: ['./employees.component.scss']
+  templateUrl: './employees.component.html'
 })
 export class EmployeesComponent implements OnInit {
 
@@ -14,14 +13,16 @@ export class EmployeesComponent implements OnInit {
   filteredEmployees: any;
   searchField = new FormControl('');
   searching = false;
+  loading = false;
 
   constructor(readonly employeeService: EmployeesService) { }
 
   ngOnInit(): void {
+    this.loading = true;
     this.employeeService.getEmployees().subscribe(employees => {
       this.employees = employees;
       this.filteredEmployees = employees;
-      console.log('employees', employees);
+      this.loading = false;
     });
 
     this.searchField.valueChanges.pipe(

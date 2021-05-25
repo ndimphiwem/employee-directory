@@ -1,1 +1,87 @@
-<p>profile works!</p>
+<div class="container mt-3 mb-5 py-3">
+  <div class="row justify-content-center">
+    <div class="col-md-4 col-lg-3">
+      <div class="card h-100 mt-5" *ngIf="auth.user$ | async as user">
+        <img
+        [src]="user?.picture"
+          class="card-img-top rounded-circle img__avatar img-thumbnail"
+          alt="..."
+        />
+        <div class="card-body">
+          <h5 class="card-title text-center">{{ user?.given_name }} {{ user?.family_name }} </h5>
+          <p class="text-center"> {{ user?.email }} </p>
+          <p class="card-text" *ngIf="user?.metadata">
+            This is a longer card with supporting text below as a natural lead-in to
+            additional content. This content is a little bit longer.
+          </p>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-md-4">
+      <form *ngIf="profileForm" (submit)="updateProfile(profileForm)" [formGroup]="profileForm" class="p-3 pb-5 card">
+        <div class="row">
+          <div class="col-12">
+            <div class="mb-3 pb-1">
+              <input
+                type="text"
+                class="form-control"
+                formControlName="streetAddress"
+                placeholder="Street Address"
+              />
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="mb-3 pb-1">
+              <input
+                type="text"
+                class="form-control"
+                formControlName="suburb"
+                placeholder="Suburb"
+              />
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="mb-3 pb-1">
+              <input
+                type="text"
+                class="form-control"
+                formControlName="city"
+                placeholder="City"
+              />
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="mb-3 pb-1">
+              <input
+                type="text"
+                class="form-control"
+                formControlName="province"
+                placeholder="Province"
+                required
+              />
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="mb-3 pb-1">
+              <select class="form-control select" formControlName="workLocation">
+                <option value="" selected>Select Work Location</option>
+                <option [value]="location" *ngFor="let location of workLocations"> {{ location }} </option>
+              </select>
+            </div>            
+          </div>
+          <div class="col-12">
+              <button type="submit" class="btn btn-dark" *ngIf="!loading">Update Profile</button>
+              <button class="btn btn-dark" type="button" *ngIf="loading" disabled>
+                <span
+                  class="spinner-border spinner-border-sm"
+                  role="status"
+                  aria-hidden="true"
+                ></span>
+              </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
